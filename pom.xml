@@ -27,10 +27,19 @@
               <groupId>org.apache.tomcat.maven</groupId>
               <artifactId>tomcat7-maven-plugin</artifactId>
               <version>2.2</version>
+              <executions>
+                <execution>
+                  <id>tomcat7-redeploy</id>
+                  <phase>install</phase>
+                  <goals>
+                    <goal>deploy</goal>
+                  </goals>
+                </execution>
+              </executions>
               <configuration>
                 <url>http://xxxxxx-nnnnnn.use1-2.nitrousbox.com:8080/manager/text</url>
                 <server>nitrous</server>
-                <path>/jersey-json</path>
+                <path>/${project.build.finalName}</path>
               </configuration>
             </plugin>
         </plugins>
