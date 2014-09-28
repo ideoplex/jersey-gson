@@ -32,7 +32,7 @@
                   <id>tomcat7-redeploy</id>
                   <phase>install</phase>
                   <goals>
-                    <goal>deploy</goal>
+                    <goal>redeploy</goal>
                   </goals>
                 </execution>
               </executions>
