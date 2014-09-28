@@ -1,7 +1,9 @@
 package com.ideoplex.tutorial;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -21,5 +23,26 @@ public class MyResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt() {
         return "Got it!";
+    }
+
+    /**
+     * Methods to get and post a json User object
+     */
+    @GET
+    @Path("user/template")
+    @Produces(MediaType.APPLICATION_JSON)
+    public User getUserTemplate() {
+        User  user  = new User();
+        user.setEmail("noone@example.com");
+        user.setSurName("Doe");
+        user.setGivenName("John");
+        return user;
+    }
+
+    @POST
+    @Path("user/post")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public User postUser(User user) {
+        return user;
     }
 }
