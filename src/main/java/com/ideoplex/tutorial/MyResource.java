@@ -5,6 +5,8 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -12,6 +14,10 @@ import javax.ws.rs.core.MediaType;
  */
 @Path("myresource")
 public class MyResource {
+    /**
+     * HashMap<String,User> containing all Users known to the system
+     */
+    protected static UserMap users = new UserMap();
 
     /**
      * Method handling HTTP GET requests. The returned object will be sent
@@ -23,6 +29,16 @@ public class MyResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt() {
         return "Got it!";
+    }
+
+    /**
+     */
+    @GET
+    @Path("user/map")
+    @Produces(MediaType.APPLICATION_JSON)
+    public UserMap getUserMap()
+    {
+        return users;
     }
 
     /**
@@ -43,6 +59,17 @@ public class MyResource {
     @Path("user/post")
     @Consumes(MediaType.APPLICATION_JSON)
     public User postUser(User user) {
-        return user;
+        String email = user.getEmail();
+        if ( users.containsKey(email) ) {
+            throw new WebApplicationException(Response
+                                              .status(Response.Status.BAD_REQUEST)
+                                              .type(MediaType.TEXT_PLAIN)
+                                              .entity("User email \"" + email + "\" already exists")
+                                              .build());
+        }
+        else {
+            users.put(email, user);
+            return user;
+        }
     }
 }
