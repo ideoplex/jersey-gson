@@ -25,12 +25,16 @@ import javax.ws.rs.ext.MessageBodyWriter;
 
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 
 @Provider
 @Produces(MediaType.APPLICATION_JSON)
 @Singleton
 public class GsonWriter<T> implements MessageBodyWriter<T> {
+    protected static Gson gson = new GsonBuilder()
+        .registerTypeAdapter(UserMap.class,new UserMapMarshall())
+        .create();
  
     @Override
     public void writeTo(T t, Class<?> type, Type genericType,
@@ -38,9 +42,8 @@ public class GsonWriter<T> implements MessageBodyWriter<T> {
             MultivaluedMap<String, Object> httpHeaders,
             OutputStream entityStream)
             throws IOException, WebApplicationException {
-        Gson g = new Gson();
         httpHeaders.get("Content-Type").add("charset=UTF-8");
-        entityStream.write(g.toJson(t).getBytes("UTF-8"));
+        entityStream.write(gson.toJson(t).getBytes("UTF-8"));
     }
  
     @Override
