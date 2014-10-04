@@ -37,7 +37,7 @@
                 </execution>
               </executions>
               <configuration>
-                <url>http://xxxxxx-nnnnnn.use1-2.nitrousbox.com:8080/manager/text</url>
+                <url>http://${env.TOMCAT_HOST}:8080/manager/text</url>
                 <server>nitrous</server>
                 <path>/${project.build.finalName}</path>
               </configuration>
