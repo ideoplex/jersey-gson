@@ -85,42 +85,42 @@
     </div>
 
     <script type="text/javascript" class="init">
-      $(document).ready(function() {
-          $('#users').dataTable({
-              "ajax":  "webapi/myresource/user/map",
-              "columns": [
-                  { "data": "email" },
-                  { "data": "surName" },
-                  { "data": "givenName" }
-                  ]
-              });
-      });
-      function FormToJson(form){
-          var array  = $(form).serializeArray();
-          var json   = {};
-          $.each(array,function(){
-              json[this.name] = this.value || '';
-          });
-          return json;
-      }
-      function userPost() {
-          var form = $('form#add-user');
-          var json = FormToJson(form);
-          $.ajax({
-              type:        "POST",
-              url:         "webapi/myresource/user/post",
-              data:        JSON.stringify(json),
-              contentType: "application/json; charset=utf-8",
-              success:     function(data,status,xhr){
-                  form[0].reset();
-                  $('#users').dataTable().api().ajax.reload();
-              }
-          });
-      }
-      $('button#user-post').click(userPost);
-      $('#add-user-modal').on('shown.bs.modal',function(e){
-          $('#add-user-email').focus();
-      });
+     $(document).ready(function() {
+       $('#users').dataTable({
+         "ajax":  "webapi/myresource/user/map",
+         "columns": [
+           { "data": "email" },
+           { "data": "surName" },
+           { "data": "givenName" }
+         ]
+       });
+     });
+     function FormToJson(form){
+       var array  = $(form).serializeArray();
+       var json   = {};
+       $.each(array,function(){
+         json[this.name] = this.value || '';
+       });
+       return json;
+     }
+     function userPost() {
+       var form = $('form#add-user');
+       var json = FormToJson(form);
+       $.ajax({
+         type:        "POST",
+         url:         "webapi/myresource/user/post",
+         data:        JSON.stringify(json),
+         contentType: "application/json; charset=utf-8",
+         success:     function(data,status,xhr){
+           form[0].reset();
+           $('#users').dataTable().api().ajax.reload();
+         }
+       });
+     }
+     $('button#user-post').click(userPost);
+     $('#add-user-modal').on('shown.bs.modal',function(e){
+       $('#add-user-email').focus();
+     });
     </script>
   </body>
 </html>
