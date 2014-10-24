@@ -3,6 +3,7 @@
     <title>Jersey, Gson and DataTables</title>
 
     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"/>
 
@@ -26,6 +27,7 @@
                 <th>email</th>
                 <th>SurName</th>
                 <th>Given Name</th>
+                <th>Actions</th>
               </tr>
             </thead>
           </table>
@@ -35,7 +37,7 @@
         <div class="col-md-8">
           <p/>
           <p>
-            <button data-toggle="modal" href="#add-user-modal" class="btn btn-primary pull-right">Add User</button>
+            <button onclick="setUserPost()" class="btn btn-primary pull-right">Add User</button>
           </p>
         </div>
       </div>
@@ -63,7 +65,7 @@
 		    <label class="col-md-3 control-label">Name</label>
 		    <div class="col-md-4">
                       <label class="sr-only">Given Name</label>
-		      <input name="givenName" class="form-control" type="text" placeholder="Given Name (Mononym)"/>
+		      <input name="givenName" class="form-control" type="text" placeholder="Given Name (Mononym)" id="add-user-givenName"/>
 		    </div>
 		    <div class="col-md-4">
                       <label class="sr-only">Surname</label>
@@ -85,13 +87,22 @@
     </div>
 
     <script type="text/javascript" class="init">
+     var modeAdd = true;
      $(document).ready(function() {
        $('#users').dataTable({
          "ajax":  "webapi/myresource/user/map",
          "columns": [
            { "data": "email" },
            { "data": "surName" },
-           { "data": "givenName" }
+           { "data": "givenName" },
+           { "data": "email",
+             "orderable": false,
+             "searchable": false,
+             "render": function(data,type,row,meta) {
+               var a = '<a onclick="setUserEdit(\''+row.email+'\',\'' + row.givenName + '\',\'' + row.surName + '\')"><i class="fa fa-edit"></i></a>';
+               return a;
+             }
+           }
          ]
        });
      });
@@ -117,10 +128,36 @@
          }
        });
      }
+     function userEdit() {
+       alert('userEdit');
+     }
      $('button#user-post').click(userPost);
      $('#add-user-modal').on('shown.bs.modal',function(e){
-       $('#add-user-email').focus();
+       if ( modeAdd ) {
+         $('#add-user-email').focus();
+       } else {
+         $('#add-user-givenName').focus();
+       }
      });
+     function setUserEdit(email, givenName, surName ) {
+       var form = $('form#add-user')[0];
+       form.reset();
+       form.elements['email'].value = email;
+       form.elements['givenName'].value = givenName;
+       form.elements['surName'].value = surName;
+       $('#add-user-email').prop('readonly',true);
+       $('#user-post').unbind('click');
+       $('#user-post').bind('click',userEdit);
+       $('#add-user-modal').modal('show');
+     }
+     function setUserPost() {
+       $('form#add-user')[0].reset();
+       modeAdd = true;
+       $('#add-user-email').prop('readonly',false);
+       $('#user-post').unbind('click');
+       $('#user-post').bind('click',userPost);
+       $('#add-user-modal').modal('show');
+     }
     </script>
   </body>
 </html>
