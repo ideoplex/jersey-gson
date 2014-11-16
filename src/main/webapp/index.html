@@ -14,6 +14,7 @@
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="js/bootbox.min.js"></script>
   </head>
 
   <body>
@@ -122,6 +123,9 @@
          url:         "webapi/myresource/user/post",
          data:        JSON.stringify(json),
          contentType: "application/json; charset=utf-8",
+         error:       function(xhr,status,error) {
+           bootbox.alert(xhr.responseText);
+         },
          success:     function(data,status,xhr){
            form[0].reset();
            $('#users').dataTable().api().ajax.reload();
@@ -129,7 +133,21 @@
        });
      }
      function userEdit() {
-       alert('userEdit');
+       var form = $('form#add-user');
+       var json = FormToJson(form);
+       $.ajax({
+         type:        "POST",
+         url:         "webapi/myresource/user/edit",
+         data:        JSON.stringify(json),
+         contentType: "application/json; charset=utf-8",
+         error:       function(xhr,status,error) {
+           bootbox.alert(xhr.responseText);
+         },
+         success:     function(data,status,xhr){
+           form[0].reset();
+           $('#users').dataTable().api().ajax.reload();
+         }
+       });
      }
      $('button#user-post').click(userPost);
      $('#add-user-modal').on('shown.bs.modal',function(e){

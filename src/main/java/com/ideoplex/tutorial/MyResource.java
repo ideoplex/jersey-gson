@@ -72,4 +72,22 @@ public class MyResource {
             return user;
         }
     }
+
+    @POST
+    @Path("user/edit")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public User editUser(User user) {
+        String email = user.getEmail();
+        if ( !users.containsKey(email) ) {
+            throw new WebApplicationException(Response
+                                              .status(Response.Status.BAD_REQUEST)
+                                              .type(MediaType.TEXT_PLAIN)
+                                              .entity("User email \"" + email + "\" does not exist")
+                                              .build());
+        }
+        else {
+            users.put(email, user);
+            return user;
+        }
+    }
 }
