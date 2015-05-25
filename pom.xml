@@ -42,6 +42,12 @@
                 <path>/${project.build.finalName}</path>
               </configuration>
             </plugin>
+
+            <plugin>
+              <groupId>org.eclipse.jetty</groupId>
+              <artifactId>jetty-maven-plugin</artifactId>
+              <version>${jetty.version}</version>
+            </plugin>
         </plugins>
     </build>
 
@@ -78,6 +84,7 @@
     </dependencies>
     <properties>
         <jersey.version>2.12</jersey.version>
+        <jetty.version>9.3.0.M2</jetty.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 </project>
