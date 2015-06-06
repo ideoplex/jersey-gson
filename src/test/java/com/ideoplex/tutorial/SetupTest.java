@@ -18,12 +18,14 @@ import org.testng.annotations.Test;
 
 public class SetupTest {
 
-    @Parameters({"baseurl"})
+    @Parameters({"browser","baseurl"})
     @Test
-    public void userCreate( String baseurl )
+    public void userCreate( String browser, String baseurl )
         throws Exception
     {
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = "chrome".equalsIgnoreCase(browser)
+            ? new ChromeDriver()
+            : new FirefoxDriver();
         driver.get(baseurl);
 
         WebDriverWait  block  = new WebDriverWait(driver,10);
