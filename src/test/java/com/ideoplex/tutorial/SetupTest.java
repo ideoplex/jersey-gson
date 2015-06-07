@@ -28,17 +28,17 @@ public class SetupTest {
             : new FirefoxDriver();
         driver.get(baseurl);
 
-        WebDriverWait  block  = new WebDriverWait(driver,10);
-        WebElement openModal  = block.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Add User')]")));
+        WebElement openModal  = driver.findElement(By.xpath("//button[contains(text(),'Add User')]"));
         openModal.click();
 
-        block.until(ExpectedConditions.visibilityOfElementLocated(By.id("add-user-modal")));
+        WebDriverWait  block = new WebDriverWait(driver,10);
+        WebElement     modal = block.until(ExpectedConditions.visibilityOfElementLocated(By.id("add-user-modal")));
         WebElement input;
-        input    = driver.findElement(By.id("add-user-email"));
+        input    = modal.findElement(By.id("add-user-email"));
         input.sendKeys("abe@example.com");
-        input    = driver.findElement(By.id("add-user-givenName"));
+        input    = modal.findElement(By.id("add-user-givenName"));
         input.sendKeys("Abraham");
-        input    = driver.findElement(By.id("add-user-surName"));
+        input    = modal.findElement(By.id("add-user-surName"));
         input.sendKeys("Lincoln");
 
         input    = driver.findElement(By.id("user-post"));
