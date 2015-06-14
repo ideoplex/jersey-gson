@@ -26,7 +26,7 @@
             <thead>
               <tr>
                 <th>email</th>
-                <th>SurName</th>
+                <th>Surname</th>
                 <th>Given Name</th>
                 <th>Actions</th>
               </tr>
@@ -70,7 +70,7 @@
 		    </div>
 		    <div class="col-md-4">
                       <label class="sr-only">Surname</label>
-		      <input name="surName" class="form-control" type="text" placeholder="Surname" id="add-user-surName"/>
+		      <input name="surname" class="form-control" type="text" placeholder="Surname" id="add-user-surname"/>
 		    </div>
                   </div>
 		</div>
@@ -94,13 +94,13 @@
          "ajax":  "webapi/myresource/user/map",
          "columns": [
            { "data": "email" },
-           { "data": "surName" },
+           { "data": "surname" },
            { "data": "givenName" },
            { "data": "email",
              "orderable": false,
              "searchable": false,
              "render": function(data,type,row,meta) {
-               var a = '<a onclick="setUserEdit(\''+row.email+'\',\'' + row.givenName + '\',\'' + row.surName + '\')"><i class="fa fa-edit"></i></a>';
+               var a = '<a onclick="setUserEdit(\''+row.email+'\',\'' + row.givenName + '\',\'' + row.surname + '\')"><i class="fa fa-edit"></i></a>';
                return a;
              }
            }
@@ -157,12 +157,12 @@
          $('#add-user-givenName').focus();
        }
      });
-     function setUserEdit(email, givenName, surName ) {
+     function setUserEdit(email, givenName, surname ) {
        var form = $('form#add-user')[0];
        form.reset();
        form.elements['email'].value = email;
        form.elements['givenName'].value = givenName;
-       form.elements['surName'].value = surName;
+       form.elements['surname'].value = surname;
        $('#add-user-email').prop('readonly',true);
        $('#user-post').unbind('click');
        $('#user-post').bind('click',userEdit);

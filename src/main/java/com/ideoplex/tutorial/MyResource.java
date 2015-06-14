@@ -50,7 +50,7 @@ public class MyResource {
     public User getUserTemplate() {
         User  user  = new User();
         user.setEmail("noone@example.com");
-        user.setSurName("Doe");
+        user.setSurname("Doe");
         user.setGivenName("John");
         return user;
     }
