@@ -18,3 +18,9 @@ You can run the selenium tests in another window via:
 ```
 mvn test
 ```
+
+If you prefer Google Chrome, then install the [ChromeDriver](https://code.google.com/p/selenium/wiki/ChromeDriver) and:
+
+```
+mvn test -Dbrowser=chrome
+```

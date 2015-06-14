@@ -45,7 +45,7 @@ public class SetupTest {
         input.sendKeys(email);
         input    = modal.findElement(By.id("add-user-givenName"));
         input.sendKeys(givenName);
-        input    = modal.findElement(By.id("add-user-surName"));
+        input    = modal.findElement(By.id("add-user-surname"));
         input.sendKeys(surname);
 
         input    = driver.findElement(By.id("user-post"));
