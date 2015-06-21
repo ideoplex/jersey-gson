@@ -18,9 +18,12 @@ import org.testng.annotations.Test;
 
 public class SetupTest {
 
+    protected boolean ajaxWait = false;
+
     public void addUser(WebDriver driver, String email, String givenName, String surname)
     {
         WebDriverWait  block = new WebDriverWait(driver,10);
+        if ( ajaxWait ) { block.until(JQueryAjaxDone.CONDITION); }
         WebElement    search  = block.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#users_filter input")));
         search.clear();
         search.sendKeys(email);
@@ -72,15 +75,19 @@ public class SetupTest {
         addUser(driver, "abraham@example.com", "Abraham",  "Lincoln");
     }
 
-    @Parameters({"browser","baseurl"})
+    @Parameters({"browser","baseurl","waitajax"})
     @Test
-    public void userCreate( String browser, String baseurl )
+    public void userCreate( String browser, String baseurl, String waitajax )
         throws Exception
     {
         WebDriver driver = "chrome".equalsIgnoreCase(browser)
             ? new ChromeDriver()
             : new FirefoxDriver();
         driver.get(baseurl);
+
+        ajaxWait   = waitajax.equalsIgnoreCase("true")
+            || waitajax.equalsIgnoreCase("on")
+            || waitajax.equalsIgnoreCase("yes");
 
         addUsers(driver);
 
