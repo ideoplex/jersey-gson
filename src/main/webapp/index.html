@@ -89,9 +89,13 @@
 
     <script type="text/javascript" class="init">
      var modeAdd = true;
+     var userMap = "webapi/myresource/user/map";
+     if ( window.location.search.indexOf("sleep=",0) >= 0 ) {
+       userMap = userMap + window.location.search;
+     }
      $(document).ready(function() {
        $('#users').dataTable({
-         "ajax":  "webapi/myresource/user/map",
+         "ajax":  userMap,
          "columns": [
            { "data": "email" },
            { "data": "surname" },

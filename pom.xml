@@ -57,6 +57,7 @@
                 <systemPropertyVariables>
                   <baseurl>http://localhost:8080/</baseurl>
                   <browser>firefox</browser>
+                  <waitajax>no</waitajax>
                 </systemPropertyVariables>
               </configuration>
             </plugin>
