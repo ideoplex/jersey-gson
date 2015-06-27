@@ -27,6 +27,7 @@ mvn test -Dbrowser=chrome
 
 Read about the project (from most recent to oldest):
 
+1. [jQuery Ajax and Selenium](http://ideoplex.com/2015/06/21/jquery-ajax-and-selenium/)
 1. [DataTables and Selenium](http://ideoplex.com/2015/06/14/datatables-and-selenium/)
 1. [Bootstrap Modals and Selenium](http://ideoplex.com/2015/06/07/bootstrap-modals-and-selenium/)
 1. [DataTables ajax error handling](http://ideoplex.com/2014/11/16/datatables-ajax-error-handling/)
