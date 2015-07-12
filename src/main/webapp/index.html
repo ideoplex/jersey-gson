@@ -77,7 +77,7 @@
                 <div class="form-actions">
                   <p>
                     <button type="submit" class="btn btn-primary" data-dismiss="modal" id="user-post">Submit</button>
-		    <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+		    <button type="button" class="btn" data-dismiss="modal" id="cancel-post">Cancel</button>
                   </p>
                 </div>
 	      </form>
@@ -94,7 +94,7 @@
        userMap = userMap + window.location.search;
      }
      $(document).ready(function() {
-       $('#users').dataTable({
+       $('#users').DataTable({
          "ajax":  userMap,
          "columns": [
            { "data": "email" },
@@ -104,7 +104,7 @@
              "orderable": false,
              "searchable": false,
              "render": function(data,type,row,meta) {
-               var a = '<a onclick="setUserEdit(\''+row.email+'\',\'' + row.givenName + '\',\'' + row.surname + '\')"><i class="fa fa-edit"></i></a>';
+               var a = '<a onclick="setUserEdit.call(this,\''+row.email+'\',\'' + row.givenName + '\',\'' + row.surname + '\')"><i class="fa fa-edit"></i></a>';
                return a;
              }
            }
@@ -132,7 +132,7 @@
          },
          success:     function(data,status,xhr){
            form[0].reset();
-           $('#users').dataTable().api().ajax.reload();
+           $('#users').DataTable().row.add(JSON.parse(data)).draw(false);
          }
        });
      }
@@ -146,14 +146,17 @@
          contentType: "application/json; charset=utf-8",
          error:       function(xhr,status,error) {
            bootbox.alert(xhr.responseText);
+           $('#users tbody tr.selected').removeClass('selected');
          },
          success:     function(data,status,xhr){
            form[0].reset();
-           $('#users').dataTable().api().ajax.reload();
+           $('#users').DataTable().row('.selected').data(JSON.parse(data)).draw(false);
+           $('#users tbody tr.selected').removeClass('selected');
          }
        });
      }
      $('button#user-post').click(userPost);
+     $('button#cancel-post').click(cancelPost);
      $('#add-user-modal').on('shown.bs.modal',function(e){
        if ( modeAdd ) {
          $('#add-user-email').focus();
@@ -162,6 +165,7 @@
        }
      });
      function setUserEdit(email, givenName, surname ) {
+       $(this).closest('tr').addClass('selected');
        var form = $('form#add-user')[0];
        form.reset();
        form.elements['email'].value = email;
@@ -179,6 +183,9 @@
        $('#user-post').unbind('click');
        $('#user-post').bind('click',userPost);
        $('#add-user-modal').modal('show');
+     }
+     function cancelPost() {
+       $('#users tbody tr.selected').removeClass('selected');
      }
     </script>
   </body>
