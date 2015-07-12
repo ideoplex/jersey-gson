@@ -1,7 +1,9 @@
 jersey-gson
 ===========
 
-Sample java web application with jersey and gson that displays a list of users in a [Datatables](http://datatables.net/) table. The application retrieves the users via Datatables ajax.
+Sample java web application with jersey and gson that displays a list of users in a [Datatables](http://datatables.net/) table.
+The application retrieves the users via Datatables ajax.
+User edits are submitted to the server and successful response is applied to the local data set in the browser.
 
 Users can be added via a [Bootstrap](http://getbootstrap.com/) Modal dialog. Users are kept in memory and are not persisted.
 
@@ -27,6 +29,8 @@ mvn test -Dbrowser=chrome
 
 Read about the project (from most recent to oldest):
 
+1. [DataTables edit Locally](http://ideoplex.com/2015/07/12/datatables-edit-locally/)
+1. [jQuery Ajax and Selenium](http://ideoplex.com/2015/06/21/jquery-ajax-and-selenium/)
 1. [DataTables and Selenium](http://ideoplex.com/2015/06/14/datatables-and-selenium/)
 1. [Bootstrap Modals and Selenium](http://ideoplex.com/2015/06/07/bootstrap-modals-and-selenium/)
 1. [DataTables ajax error handling](http://ideoplex.com/2014/11/16/datatables-ajax-error-handling/)
