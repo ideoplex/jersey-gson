@@ -4,6 +4,7 @@ jersey-gson
 Sample java web application with jersey and gson that displays a list of users in a [Datatables](http://datatables.net/) table.
 The application retrieves the users via Datatables ajax.
 User edits are submitted to the server and successful response is applied to the local data set in the browser.
+Long cell text will be truncated with an ellipsis.
 
 Users can be added via a [Bootstrap](http://getbootstrap.com/) Modal dialog. Users are kept in memory and are not persisted.
 
@@ -37,3 +38,4 @@ Read about the project (from most recent to oldest):
 1. [DataTables Column Render](http://ideoplex.com/2014/10/23/datatables-column-render/)
 1. [Modal Dialog for Jersey, Gson and DataTables](http://ideoplex.com/2014/10/12/modal-dialog-for-jersey-gson-and-datatables/)
 1. [Jersey, Gson, DataTables](http://ideoplex.com/2014/10/04/jersey-gson-and-datatables/)
+1. [DataTables, Bootstrap and Text Overflow](http://ideoplex.com/2015/08/16/datatables-bootstrap-and-text-overflow/)
