@@ -16,7 +16,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
-public class SetupTest {
+public class BrowserTest {
 
     protected boolean ajaxWait = false;
 
@@ -76,9 +76,8 @@ public class SetupTest {
     }
 
     @Parameters({"browser","baseurl","waitajax"})
-    @Test
+    @Test(invocationCount = 2, groups="browser")
     public void userCreate( String browser, String baseurl, String waitajax )
-        throws Exception
     {
         WebDriver driver = "chrome".equalsIgnoreCase(browser)
             ? new ChromeDriver()
@@ -91,8 +90,15 @@ public class SetupTest {
 
         addUsers(driver);
 
-        Thread.sleep(10000);
         driver.quit();
+    }
+
+    @Test(dependsOnGroups = "browser")
+    public void pause()
+        throws Exception
+    {
+        System.out.println("Sleeping");
+        Thread.sleep(10000);
     }
 
 }
