@@ -16,7 +16,9 @@ The application can be run from the command line via:
 mvn jetty:run
 ```
 
-You can run the selenium tests in another window via:
+[Maven](https://maven.apache.org/) is configured to autostart/autostop jetty
+for the selenium test. Please halt any "mvn jetty:run" invocations before
+running the tests via:
 
 ```
 mvn test
@@ -30,12 +32,13 @@ mvn test -Dbrowser=chrome
 
 Read about the project (from most recent to oldest):
 
-1. [DataTables edit Locally](http://ideoplex.com/2015/07/12/datatables-edit-locally/)
-1. [jQuery Ajax and Selenium](http://ideoplex.com/2015/06/21/jquery-ajax-and-selenium/)
-1. [DataTables and Selenium](http://ideoplex.com/2015/06/14/datatables-and-selenium/)
-1. [Bootstrap Modals and Selenium](http://ideoplex.com/2015/06/07/bootstrap-modals-and-selenium/)
-1. [DataTables ajax error handling](http://ideoplex.com/2014/11/16/datatables-ajax-error-handling/)
-1. [DataTables Column Render](http://ideoplex.com/2014/10/23/datatables-column-render/)
-1. [Modal Dialog for Jersey, Gson and DataTables](http://ideoplex.com/2014/10/12/modal-dialog-for-jersey-gson-and-datatables/)
-1. [Jersey, Gson, DataTables](http://ideoplex.com/2014/10/04/jersey-gson-and-datatables/)
-1. [DataTables, Bootstrap and Text Overflow](http://ideoplex.com/2015/08/16/datatables-bootstrap-and-text-overflow/)
+1. [Autostart Jetty in Maven](https://ideoplex.com/2015/10/25/autostart-jetty-in-maven/)
+1. [DataTables edit Locally](https://ideoplex.com/2015/07/12/datatables-edit-locally/)
+1. [jQuery Ajax and Selenium](https://ideoplex.com/2015/06/21/jquery-ajax-and-selenium/)
+1. [DataTables and Selenium](https://ideoplex.com/2015/06/14/datatables-and-selenium/)
+1. [Bootstrap Modals and Selenium](https://ideoplex.com/2015/06/07/bootstrap-modals-and-selenium/)
+1. [DataTables ajax error handling](https://ideoplex.com/2014/11/16/datatables-ajax-error-handling/)
+1. [DataTables Column Render](https://ideoplex.com/2014/10/23/datatables-column-render/)
+1. [Modal Dialog for Jersey, Gson and DataTables](https://ideoplex.com/2014/10/12/modal-dialog-for-jersey-gson-and-datatables/)
+1. [Jersey, Gson, DataTables](https://ideoplex.com/2014/10/04/jersey-gson-and-datatables/)
+1. [DataTables, Bootstrap and Text Overflow](https://ideoplex.com/2015/08/16/datatables-bootstrap-and-text-overflow/)
