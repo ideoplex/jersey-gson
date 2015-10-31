@@ -134,13 +134,13 @@
          type:        "POST",
          url:         "webapi/myresource/user/post",
          data:        JSON.stringify(json),
-         contentType: "application/json; charset=utf-8",
+         contentType: "application/json",
          error:       function(xhr,status,error) {
            bootbox.alert(xhr.responseText);
          },
          success:     function(data,status,xhr){
            form[0].reset();
-           $('#users').DataTable().row.add(JSON.parse(data)).draw(false);
+           $('#users').DataTable().row.add(data).draw(false);
          }
        });
      }
@@ -151,14 +151,14 @@
          type:        "POST",
          url:         "webapi/myresource/user/edit",
          data:        JSON.stringify(json),
-         contentType: "application/json; charset=utf-8",
+         contentType: "application/json",
          error:       function(xhr,status,error) {
            bootbox.alert(xhr.responseText);
            $('#users tbody tr.selected').removeClass('selected');
          },
          success:     function(data,status,xhr){
            form[0].reset();
-           $('#users').DataTable().row('.selected').data(JSON.parse(data)).draw(false);
+           $('#users').DataTable().row('.selected').data(data).draw(false);
            $('#users tbody tr.selected').removeClass('selected');
          }
        });
