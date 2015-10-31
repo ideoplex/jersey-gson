@@ -42,7 +42,6 @@ public class GsonWriter<T> implements MessageBodyWriter<T> {
             MultivaluedMap<String, Object> httpHeaders,
             OutputStream entityStream)
             throws IOException, WebApplicationException {
-        httpHeaders.get("Content-Type").add("charset=UTF-8");
         entityStream.write(gson.toJson(t).getBytes("UTF-8"));
     }
  

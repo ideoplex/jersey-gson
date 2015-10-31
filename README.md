@@ -32,7 +32,9 @@ mvn test -Dbrowser=chrome
 
 Read about the project (from most recent to oldest):
 
+1. [jersey-gson Content-Type Woes](https://ideoplex.com/2015/10/31/jersey-gson-content-type-woes/)
 1. [Autostart Jetty in Maven](https://ideoplex.com/2015/10/25/autostart-jetty-in-maven/)
+1. [DataTables, Bootstrap and Text Overflow](https://ideoplex.com/2015/08/16/datatables-bootstrap-and-text-overflow/)
 1. [DataTables edit Locally](https://ideoplex.com/2015/07/12/datatables-edit-locally/)
 1. [jQuery Ajax and Selenium](https://ideoplex.com/2015/06/21/jquery-ajax-and-selenium/)
 1. [DataTables and Selenium](https://ideoplex.com/2015/06/14/datatables-and-selenium/)
