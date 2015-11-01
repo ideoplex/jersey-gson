@@ -122,9 +122,16 @@
           <version>${selenium.version}</version>
           <scope>test</scope>
         </dependency>
+        <dependency>
+          <groupId>com.sun.jersey</groupId>
+          <artifactId>jersey-client</artifactId>
+          <version>${jersey.client.version}</version>
+          <scope>test</scope>
+        </dependency>
     </dependencies>
     <properties>
         <jersey.version>2.12</jersey.version>
+        <jersey.client.version>1.18</jersey.client.version>
         <jetty.version>9.3.0.M2</jetty.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <testng.version>6.9.4</testng.version>
