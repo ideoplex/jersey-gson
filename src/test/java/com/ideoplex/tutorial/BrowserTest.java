@@ -76,7 +76,7 @@ public class BrowserTest {
     }
 
     @Parameters({"browser","baseurl","waitajax"})
-    @Test(invocationCount = 2, groups="browser")
+    @Test(invocationCount = 2, dependsOnGroups="client", groups="browser")
     public void userCreate( String browser, String baseurl, String waitajax )
     {
         WebDriver driver = "chrome".equalsIgnoreCase(browser)

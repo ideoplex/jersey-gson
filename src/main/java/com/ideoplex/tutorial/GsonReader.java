@@ -28,12 +28,16 @@ import javax.ws.rs.core.MultivaluedMap;
 
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 
 @Provider
 @Consumes(MediaType.APPLICATION_JSON)
 @Singleton
 public class GsonReader<T> implements MessageBodyReader<T> {
+    protected static Gson gson = new GsonBuilder()
+        .registerTypeAdapter(UserMap.class,new UserMapUnmarshall())
+        .create();
  
     @Override
     public boolean isReadable(Class<?> type, Type genericType,
@@ -46,8 +50,7 @@ public class GsonReader<T> implements MessageBodyReader<T> {
             Annotation[] antns, MediaType mt,
             MultivaluedMap<String, String> mm, InputStream in)
             throws IOException, WebApplicationException {
-        Gson g = new Gson();
-        return g.fromJson(_convertStreamToString(in), type);
+        return gson.fromJson(_convertStreamToString(in), type);
     }
  
     private String _convertStreamToString(InputStream inputStream)
