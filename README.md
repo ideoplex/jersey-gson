@@ -2,7 +2,7 @@ jersey-gson
 ===========
 
 Sample java web application with jersey and custom gson serialiation/deserialization
-to displays a list of users in a [Datatables](http://datatables.net/) table.
+to display a list of users in a [Datatables](http://datatables.net/) table.
 The application retrieves the users via Datatables ajax.
 User edits are submitted to the server and successful response is applied to the local data set in the browser.
 Long cell text will be truncated with an ellipsis.
