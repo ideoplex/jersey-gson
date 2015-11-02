@@ -129,6 +129,18 @@
           <version>${jersey.client.version}</version>
           <scope>test</scope>
         </dependency>
+        <dependency>
+          <groupId>info.cukes</groupId>
+          <artifactId>cucumber-java</artifactId>
+          <version>${cukes.version}</version>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>info.cukes</groupId>
+          <artifactId>cucumber-testng</artifactId>
+          <version>${cukes.version}</version>
+          <scope>test</scope>
+        </dependency>
     </dependencies>
     <properties>
         <jersey.version>2.12</jersey.version>
@@ -138,6 +150,7 @@
         <testng.version>6.9.4</testng.version>
         <selenium.version>2.45.0</selenium.version>
         <surefire.version>2.18.1</surefire.version>
+        <cukes.version>1.2.4</cukes.version>
         <skip></skip>
     </properties>
 </project>
