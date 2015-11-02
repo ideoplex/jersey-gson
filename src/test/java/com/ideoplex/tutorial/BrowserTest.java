@@ -75,30 +75,43 @@ public class BrowserTest {
         addUser(driver, "abraham@example.com", "Abraham",  "Lincoln");
     }
 
-    @Parameters({"browser","baseurl","waitajax"})
+    @Parameters({"browser","baseurl","waitajax","skip"})
     @Test(invocationCount = 2, dependsOnGroups="client", groups="browser")
-    public void userCreate( String browser, String baseurl, String waitajax )
+    public void userCreate( String browser, String baseurl, String waitajax, String skip )
     {
-        WebDriver driver = "chrome".equalsIgnoreCase(browser)
-            ? new ChromeDriver()
-            : new FirefoxDriver();
-        driver.get(baseurl);
+        boolean   run       = true;
+        for ( String test : skip.split(",") ) {
+            run = run && ! test.equals("browser");
+        }
+        if ( run ) {
+            WebDriver driver = "chrome".equalsIgnoreCase(browser)
+                ? new ChromeDriver()
+                : new FirefoxDriver();
+            driver.get(baseurl);
 
-        ajaxWait   = waitajax.equalsIgnoreCase("true")
-            || waitajax.equalsIgnoreCase("on")
-            || waitajax.equalsIgnoreCase("yes");
+            ajaxWait   = waitajax.equalsIgnoreCase("true")
+                || waitajax.equalsIgnoreCase("on")
+                || waitajax.equalsIgnoreCase("yes");
 
-        addUsers(driver);
+            addUsers(driver);
 
-        driver.quit();
+            driver.quit();
+        }
     }
 
+    @Parameters("skip")
     @Test(dependsOnGroups = "browser")
-    public void pause()
+    public void pause(String skip)
         throws Exception
     {
-        System.out.println("Sleeping");
-        Thread.sleep(10000);
+        boolean   run       = true;
+        for ( String test : skip.split(",") ) {
+            run = run && ! test.equals("browser");
+        }
+        if ( run ) {
+            System.out.println("Sleeping");
+            Thread.sleep(10000);
+        }
     }
 
 }

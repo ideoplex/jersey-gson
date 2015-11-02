@@ -74,6 +74,7 @@
                   <baseurl>http://localhost:8080/</baseurl>
                   <browser>firefox</browser>
                   <waitajax>on</waitajax>
+                  <skip>${skip}</skip>
                 </systemPropertyVariables>
               </configuration>
             </plugin>
@@ -137,5 +138,6 @@
         <testng.version>6.9.4</testng.version>
         <selenium.version>2.45.0</selenium.version>
         <surefire.version>2.18.1</surefire.version>
+        <skip></skip>
     </properties>
 </project>
