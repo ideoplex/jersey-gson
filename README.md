@@ -46,4 +46,3 @@ Read about the project (from most recent to oldest):
 1. [DataTables Column Render](https://ideoplex.com/2014/10/23/datatables-column-render/)
 1. [Modal Dialog for Jersey, Gson and DataTables](https://ideoplex.com/2014/10/12/modal-dialog-for-jersey-gson-and-datatables/)
 1. [Jersey, Gson, DataTables](https://ideoplex.com/2014/10/04/jersey-gson-and-datatables/)
-1. [DataTables, Bootstrap and Text Overflow](https://ideoplex.com/2015/08/16/datatables-bootstrap-and-text-overflow/)
